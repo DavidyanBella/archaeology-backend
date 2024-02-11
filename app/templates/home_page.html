@@ -1,0 +1,77 @@
+{% extends 'base_page.html' %}
+
+{% load static %}
+
+{% block title %}
+    История электростанций СССР
+{% endblock %}
+
+
+{% block content %}
+
+        <div class="content-wrapper">
+
+            <div class="cards-wrapper">
+
+                <div class="top">
+
+                    <h2>Поиск мест раскопок</h2>
+
+                    <form class="search-bar-wrapper" method="GET" action="/">
+
+                        {% csrf_token %}
+
+                        <input type="text" placeholder="Поиск" autocomplete="off" name="query" value="{{ query }}">
+
+                        <button type="submit">
+                            Поиск
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <div class="bottom">
+
+                    {% for place in places %}
+
+                        <div class="card-wrapper">
+
+                            <div class="preview">
+                                <img src="http://127.0.0.1:9000/images/{{ place.image }}">
+                            </div>
+
+                            <div class="card-content">
+
+                                <div class="content-top">
+
+                                    <h3 class="title">{{ place.name }}</h3>
+
+                                </div>
+
+                                <div class="content-bottom">
+
+                                     <a href="places/{{place.id}}/" class="details-link">
+                                        <span>Подробнее</span>
+                                    </a>
+
+                                    <a href="places/{{ place.id }}/delete/" class="delete-link">
+                                        <span>Удалить</span>
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+{% endblock %}

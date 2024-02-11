@@ -1,0 +1,43 @@
+{% extends 'base_page.html' %}
+
+{% load static %}
+
+{% block title %}
+    История электростанций СССР
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="content-wrapper">
+
+        <div class="place-details-wrapper">
+
+            <a class="return-link" href="/">Назад</a>
+
+            <div class="left">
+
+                <img src="http://127.0.0.1:9000/images/{{ place.image }}">
+
+            </div>
+
+            <div class="right">
+
+                <div class="place-info-container">
+
+                    <h3>{{ place.name }}</h3>
+
+                    <br>
+
+                    <span>{{ place.description }}</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
